@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Options</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Payment Options</h1>
+        <form id="paymentForm">
+            <p>You have selected Spot <span id="spotNumber"></span></p>
+
+            <label>Select Payment Method:</label><br>
+            <input type="radio" id="credit" name="payment" value="credit" required>
+            <label for="credit">Credit Card</label><br>
+            <input type="radio" id="UPI" name="payment" value="UPI" required>
+            <label for="UPI">UPI</label><br><br>
+            <input type="radio" id="Cash" name="payment" value="Cash" required>
+            <label for="Cash">Cash</label><br>
+
+            <button type="submit">Pay and Confirm</button>
+        </form>
+    </div>
+
+    <script>
+        // Get query parameters from the parking page
+        const urlParams = new URLSearchParams(window.location.search);
+        const ownerName = urlParams.get('owner');
+        const vehicleNumber = urlParams.get('vehicle');
+        const date = urlParams.get('date');
+        const entryTime = urlParams.get('time');
+        const mall = urlParams.get('mall');
+        const spotNumber = urlParams.get('spot');
+
+        // Display the selected spot number
+        document.getElementById('spotNumber').textContent = spotNumber;
+
+        // Handle payment form submission
+        document.getElementById('paymentForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Simulating exit time (in a real app, you'd use sensor data)
+            const exitTime = new Date().toLocaleTimeString();
+
+            // Simulate form submission and save the data
+            alert(`Payment confirmed! Spot ${spotNumber} booked. Exit time: ${exitTime}`);
+
+            // Redirect to confirmation page after payment
+            window.location.href = `confirmation.html?spot=${spotNumber}&exit=${exitTime}`;
+        });
+    </script>
+</body>
+</html>

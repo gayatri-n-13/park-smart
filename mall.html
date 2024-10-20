@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Floor</title>
+    <link rel="stylesheet" href="mallstyle.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Select floor</h1>
+        <form id="mallForm">
+            <label for="mallSelect">Choose Mall:</label>
+            <select id="mallSelect" required>
+                <option value="ground">ground</option>
+                <option value="basement 1">basement1</option>
+               
+            </select><br><br>
+            <button type="submit">Continue</button>
+        </form>
+    </div>
+
+    <script>
+        // Get query parameters from previous form (for simplicity, URL query params are used)
+        const urlParams = new URLSearchParams(window.location.search);
+        const ownerName = urlParams.get('owner');
+        const vehicleNumber = urlParams.get('vehicle');
+        const date = urlParams.get('date');
+        const entryTime = urlParams.get('time');
+
+        document.getElementById('mallForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const mall = document.getElementById('mallSelect').value;
+
+            // Redirect to parking spots page, pass data in URL
+            window.location.href = `parking.html?owner=${ownerName}&vehicle=${vehicleNumber}&date=${date}&time=${entryTime}&mall=${mall}`;
+        });
+    </script>
+</body>
+</html>

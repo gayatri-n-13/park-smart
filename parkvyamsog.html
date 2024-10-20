@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Parking System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Smart Car parking Lot Management System</h1>
+        <div class="form-container">
+            <h2>Registration Form</h2>
+            <form id="registrationForm">
+                <label for="ownerName">Vehicle Owner Name:</label>
+                <input type="text" id="ownerName" name="ownerName" required><br><br>
+                
+                <label for="vehicleNumber">Vehicle Number:</label>
+                <input type="text" id="vehicleNumber" name="vehicleNumber" required><br><br>
+
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" required><br><br>
+
+                <label for="entryTime">Entry Time:</label>
+                <input type="time" id="entryTime" name="entryTime" required><br><br>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const ownerName = document.getElementById('ownerName').value;
+            const vehicleNumber = document.getElementById('vehicleNumber').value;
+            const date = document.getElementById('date').value;
+            const entryTime = document.getElementById('entryTime').value;
+
+            // Redirect to mall selection page, pass data in URL (for simplicity)
+            window.location.href = `mall.html?owner=${ownerName}&vehicle=${vehicleNumber}&date=${date}&time=${entryTime}`;
+        });
+    </script>
+</body>
+</html>

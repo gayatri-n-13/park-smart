@@ -1,0 +1,93 @@
+body {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: beige;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: black;
+}
+
+.container {
+    text-align: center;
+}
+
+.form-container {
+    background-color: rgb(45, 12, 12);
+    padding: 200px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    color: black;
+}
+label {
+    color: black;
+}
+
+h1 {
+    color: #0a0909;
+   
+} 
+
+
+h2 {
+    color: #151212;
+}
+
+input[type="text"], input[type="date"], input[type="time"] {
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #d9cb91;
+    color: black;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ffbb00;
+}
+/* Add this to your styles.css */
+.parking-lot {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.parking-spot {
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: yellow;
+    font-weight: bold;
+    position: relative;
+}
+
+.parking-spot.taken {
+    background-color: green;
+    color: white;
+}
+
+.book-spot {
+    position: absolute;
+    bottom: 10px;
+    padding: 5px;
+    background-color: #ffcc00;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+}

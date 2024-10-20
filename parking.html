@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking Availability</title>
+    <link rel="stylesheet" href="parkingstyle.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Parking Spots</h1>
+        <div class="parking-lot" id="parkingLot"></div>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const ownerName = urlParams.get('owner');
+        const vehicleNumber = urlParams.get('vehicle');
+        const date = urlParams.get('date');
+        const entryTime = urlParams.get('time');
+        const mall = urlParams.get('mall');
+
+        
+        const totalSpots = 3;
+        const takenSpots = [1, 3];
+
+        const parkingLot = document.getElementById('parkingLot');
+        let spotsHTML = '';
+
+        for (let i = 1; i <= totalSpots; i++) {
+            const isTaken = takenSpots.includes(i);
+            spotsHTML += `
+                <div class="parking-spot ${isTaken ? 'taken' : 'empty'}">
+                    <p>Spot ${i}</p>
+                    ${!isTaken ? `<button class="book-spot" data-spot="${i}">Book this spot</button>` : ''}
+                </div>
+            `;
+        }
+        parkingLot.innerHTML = spotsHTML;
+
+        
+        document.querySelectorAll('.book-spot').forEach(button => {
+            button.addEventListener('click', function() {
+                const spotNumber = this.getAttribute('data-spot');
+
+                // Redirect to payment page after selecting a spot
+                window.location.href = `payment.html?owner=${ownerName}&vehicle=${vehicleNumber}&date=${date}&time=${entryTime}&mall=${mall}&spot=${spotNumber}`;
+            });
+        });
+    </script>
+</body>
+</html>
